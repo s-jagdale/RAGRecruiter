@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+python-dotenv
+sqlmodel
+bcrypt
+python-jose[cryptography]
+ibm-watsonx-ai
+ibm-watson
+ibm-cloud-sdk-core
+pypdf
+python-docx
+chromadb
+
+# uvicorn app.main:app --reload --host 127.0.0.1 --port 8000

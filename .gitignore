@@ -1,0 +1,22 @@
+# Environment
+.env
+**/.env
+
+# Node
+node_modules/
+dist/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Database
+*.db
+
+# Cache
+rag_embeddings_cache.json
+
+# IDE
+.vscode/
+.idea/
