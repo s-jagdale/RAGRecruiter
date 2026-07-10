@@ -8,6 +8,7 @@ Tables:
 """
 
 import json
+import os
 from datetime import datetime
 from typing import Optional
 from sqlmodel import Field, SQLModel, create_engine, Session, select
