@@ -12,8 +12,14 @@ from datetime import datetime
 from typing import Optional
 from sqlmodel import Field, SQLModel, create_engine, Session, select
 
-DATABASE_URL = "sqlite:///./interview_agent.db"
-engine = create_engine(DATABASE_URL, echo=False)
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./interview_agent.db")
+
+if DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg2://", 1)
+
+connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
+
+engine = create_engine(DATABASE_URL, echo=False, connect_args=connect_args)
 
 
 # ─── Models ────────────────────────────────────────────────────────────────────
@@ -175,3 +181,4 @@ def delete_interview_session(user_id: int, session_id: int) -> bool:
         db.delete(row)
         db.commit()
         return True
+
